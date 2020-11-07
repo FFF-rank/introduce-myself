@@ -179,6 +179,7 @@ workExperienceSwiper.addEventListener('touchstart',function(){
 
 // 结束当前切换动画
 function stopTransition(){
+	event.preventDefault();
 	workExperienceSwiper.style.transition = '0s';
 	workExperienceSwiper.style.left = originX + 'px';
 }
