@@ -499,6 +499,7 @@ nav .nav-img {
 	justify-content: center;
 	align-items: center;
 	
+	word-break:break-all; 
 	border-radius: calc(var(--window-width) * .1);
 	color: #000;
 	
