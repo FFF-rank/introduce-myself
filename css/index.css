@@ -38,7 +38,8 @@ img {
 
 /* 顶部标题栏 */
 header {
-	position: relative;
+	position: fixed;
+	top: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -216,7 +217,8 @@ header {
 
 /* 底部导航栏 */
 nav {
-	position: relative;
+	position: fixed;
+	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -263,7 +265,8 @@ nav .nav-img {
 
 /* 主体内容 */
 .main {
-	position: relative;
+	position: fixed;
+	top: 8vh;
 	left: 0;
 	right: 0;
 	margin: auto;

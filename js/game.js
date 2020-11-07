@@ -60,7 +60,7 @@ function bindingEvent(){
 		}else if(i > 6){
 			j = i - 7;
 		}
-		noteArr[j].playbackRate = 1.0;
+		noteArr[j].playbackRate = 2.0;
 		noteArr[j].volume = 1.0;
 		// 触摸事件
 		piano[i].ontouchstart = function() {
