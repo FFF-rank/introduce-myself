@@ -179,13 +179,13 @@ header {
 }
 .title {
 	width: 100%;
-	height: calc(var(--nav-height) * 0.8);
+	height: var(--nav-height);
 	
 	text-align: center;
-	font-size: calc(var(--title-height) * .4);
-	line-height: calc(var(--nav-height) * 0.8);
+	font-size: calc(var(--title-height) * .5);
+	line-height: var(--nav-height);
 }
-.page-number {
+/* .page-number {
 	width: 50%;
 	height: calc(var(--nav-height) * 0.2);
 	display: flex;
@@ -200,7 +200,7 @@ header {
 }
 .page-number-item.active {
 	background-color: #000;
-}
+} */
 .header-right {
 	width: var(--title-height);
 	height: var(--title-height);
@@ -269,7 +269,8 @@ nav .nav-img {
 	top: 8vh;
 	left: 0;
 	right: 0;
-	margin: auto;
+	bottom: 8vh;
+	/* margin: auto; */
 	
 	width: var(--window-width);
 	height: var(--main-height);

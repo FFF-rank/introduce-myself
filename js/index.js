@@ -76,8 +76,8 @@ function navJump(index){
 	mainItems[navIndex].classList.remove('active');
 	mainItems[index].classList.add('active');
 	// 页码切换
-	pageNumberItem[navIndex].classList.remove('active');
-	pageNumberItem[index].classList.add('active');
+	// pageNumberItem[navIndex].classList.remove('active');
+	// pageNumberItem[index].classList.add('active');
 	navIndex = index;
 };
 
