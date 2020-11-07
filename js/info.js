@@ -1,15 +1,15 @@
 // ---------- 个人信息填写 ----------
 
 // 标签页图片
-document.querySelector('.tab-image').href ='./img/homepage/photo.png';
+document.querySelector('.tab-image').href ='./img/homepage/微信头像.jpg';
 // 版本号
-updateText('.edition','1.4');
+updateText('.edition','1.5');
 // github地址
 updateText('.GitHub-address','https://github.com/FFF-rank/introduce-myself');
 
 // ---------- 首页信息 ----------
 // 照片
-updateImage('.homepage-photo','./img/homepage/photo.png');
+updateImage('.homepage-photo','./img/homepage/微信头像.jpg');
 // 姓名
 updateText('.homepage-name','黄理志');
 // 年龄
