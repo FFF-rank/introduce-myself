@@ -151,7 +151,6 @@ workExperienceSwiper.addEventListener('touchstart',function(){
 	event.preventDefault();
 	let startX = event.touches[0].clientX;
 	document.ontouchmove = function(){
-		event.preventDefault();
 		let moveX = event.touches[0].clientX;
 		workExperienceSwiper.style.left = originX + moveX - startX + 'px';
 	};
