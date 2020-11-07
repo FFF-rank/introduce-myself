@@ -15,6 +15,10 @@ let musicPause = document.querySelector('.music-pause');
 
 // ---------- 一、全局事件 ----------
 
+// 清除浏览器默认滑动行为
+document.ontouchmove = function(){
+	event.preventDefault();
+}
 // 进入首页
 navJump(navIndex);
 // 底部导航栏点击切换
