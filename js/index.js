@@ -8,7 +8,6 @@ let headerLeft = document.querySelector('.header-left');
 let messageMask = document.querySelector('.message-mask');
 let messageCount = document.querySelector('.message-count');
 let messageRead = document.querySelector('.message-read');
-let pageNumberItem = document.querySelectorAll('.page-number-item');
 let music = document.querySelector('.music');
 let musicPlay = document.querySelector('.music-play');
 let musicPause = document.querySelector('.music-pause');
@@ -75,9 +74,7 @@ function navJump(index){
 	// 主体内容切换
 	mainItems[navIndex].classList.remove('active');
 	mainItems[index].classList.add('active');
-	// 页码切换
-	// pageNumberItem[navIndex].classList.remove('active');
-	// pageNumberItem[index].classList.add('active');
+	
 	navIndex = index;
 };
 
@@ -125,9 +122,10 @@ function photoFullScreen(arr){
 
 let workExperienceSwiper = document.querySelector('.work-experience-swiper');
 let workExperienceItem = document.querySelectorAll('.work-experience-item');
-let workExperienceIndex = 0;
+let pageNumberItem = document.querySelectorAll('.page-number-item');
 let turnLeft = document.querySelector('.turn-left');
 let turnRight = document.querySelector('.turn-right');
+let workExperienceIndex = 0;
 let originX = workExperienceSwiper.offsetLeft;
 
 // ---------- 四、工作经历事件 ----------
@@ -140,6 +138,7 @@ turnLeft.addEventListener('click',function(){
 	workExperienceSwiper.style.transition = '.3s';
 	originX = originX + workExperienceItem[0].offsetWidth;
 	workExperienceSwiper.style.left = originX + 'px';
+	workExperienceIndex--;
 	showArrow();
 })
 turnRight.addEventListener('click',function(){
@@ -147,6 +146,7 @@ turnRight.addEventListener('click',function(){
 	workExperienceSwiper.style.transition = '.3s';
 	originX = originX - workExperienceItem[0].offsetWidth;
 	workExperienceSwiper.style.left = originX + 'px';
+	workExperienceIndex++;
 	showArrow();
 })
 // 滑动切换工作经历
@@ -164,9 +164,11 @@ workExperienceSwiper.addEventListener('touchstart',function(){
 			if(workExperienceSwiper.offsetLeft - originX <= -workExperienceItem[0].offsetWidth/10){
 				originX = originX - workExperienceItem[0].offsetWidth;
 				workExperienceSwiper.style.left = originX + 'px';
+				workExperienceIndex++;
 			}else if(workExperienceSwiper.offsetLeft - originX >= workExperienceItem[0].offsetWidth/10){
 				originX = originX + workExperienceItem[0].offsetWidth;
 				workExperienceSwiper.style.left = originX + 'px';
+				workExperienceIndex--;
 			}else{
 				workExperienceSwiper.style.left = originX + 'px';
 			}
@@ -187,7 +189,7 @@ function stopTransition(){
 	workExperienceSwiper.style.transition = '0s';
 	workExperienceSwiper.style.left = originX + 'px';
 }
-// 是否显示左右切换按钮
+// 显示左右切换按钮/页码切换
 function showArrow(){
 	turnLeft.classList.remove('hide');
 	turnRight.classList.remove('hide');
@@ -196,6 +198,11 @@ function showArrow(){
 	}else if(originX <= -workExperienceSwiper.offsetWidth + workExperienceItem[0].offsetWidth){
 		turnRight.classList.add('hide');
 	}
+	// 页码切换
+	for(let i = 0, max = pageNumberItem.length; i < max; i++){
+		pageNumberItem[i].classList.remove('active');
+	}
+	pageNumberItem[workExperienceIndex].classList.add('active');
 }
 
 // ---------- 五、技术栈变量 ----------
