@@ -75,7 +75,7 @@ updateText('.javascript-detail','了解 DOM 及 BOM，了解 jQuery 的使用');
 // vue图片
 updateImage('.vue-image','./img/technology-stack/Vue.svg');
 // vue内容
-updateText('.vue-detail','了解 Vue 的组件化，Vue-Router，Vuex，Vue-CLI，及官方推荐库 axios 的使用');
+updateText('.vue-detail','了解 Vue 的组件化，Vue Router，Vuex，Vue CLI，及官方推荐库 axios');
 
 // ---------- 信息填写函数 ----------
 // 图片路径填写
