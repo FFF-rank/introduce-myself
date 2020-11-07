@@ -148,8 +148,10 @@ turnRight.addEventListener('click',function(){
 // 滑动切换工作经历
 workExperienceSwiper.addEventListener('touchstart',function(){
 	stopTransition();
+	event.preventDefault();
 	let startX = event.touches[0].clientX;
 	document.ontouchmove = function(){
+		event.preventDefault();
 		let moveX = event.touches[0].clientX;
 		workExperienceSwiper.style.left = originX + moveX - startX + 'px';
 	};
@@ -179,7 +181,6 @@ workExperienceSwiper.addEventListener('touchstart',function(){
 
 // 结束当前切换动画
 function stopTransition(){
-	event.preventDefault();
 	workExperienceSwiper.style.transition = '0s';
 	workExperienceSwiper.style.left = originX + 'px';
 }
