@@ -17,11 +17,11 @@ html {
 	/* ---------- 关键样式值 ---------- */
 	
 	/* 顶部标题栏高度 */
-	--title-height: calc(var(--window-width) * .15);
+	--title-height: 8vh;
 	/* 底部导航栏高度 */
-	--nav-height: calc(var(--window-width) * .15);
+	--nav-height: 8vh;
 	/* 主体内容高度 */
-	--main-height: calc(100vh - var(--title-height) - var(--nav-height));
+	--main-height: 84vh;
 }
 body {
 	margin: 0;
