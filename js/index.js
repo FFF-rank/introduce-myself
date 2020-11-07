@@ -156,10 +156,10 @@ workExperienceSwiper.addEventListener('touchstart',function(){
 	document.ontouchend = function(){
 		workExperienceSwiper.style.transition = '.3s';
 		if(workExperienceSwiper.offsetLeft <= 0 && workExperienceSwiper.offsetLeft >= -workExperienceSwiper.offsetWidth + workExperienceItem[0].offsetWidth){
-			if(workExperienceSwiper.offsetLeft - originX <= -workExperienceItem[0].offsetWidth/5){
+			if(workExperienceSwiper.offsetLeft - originX <= -workExperienceItem[0].offsetWidth/10){
 				originX = originX - workExperienceItem[0].offsetWidth;
 				workExperienceSwiper.style.left = originX + 'px';
-			}else if(workExperienceSwiper.offsetLeft - originX >= workExperienceItem[0].offsetWidth/5){
+			}else if(workExperienceSwiper.offsetLeft - originX >= workExperienceItem[0].offsetWidth/10){
 				originX = originX + workExperienceItem[0].offsetWidth;
 				workExperienceSwiper.style.left = originX + 'px';
 			}else{
