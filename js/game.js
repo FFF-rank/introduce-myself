@@ -8,7 +8,7 @@ let backgroundMusicSwitchContent = document.querySelector('.background-music-swi
 let gameMask = document.querySelector('.game-mask');
 let temp = null;
 let backgroundCount = 0;
-let debounce = null;
+// let debounce = null;
 let isTouch = null;
 
 // 进入游戏
@@ -129,16 +129,17 @@ function bindingEvent(){
 				}
 				if (piano[index]) {
 					if (j != temp) {
-						if (debounce == null) {
-							debounce = setTimeout(function() {
-								if (temp != null) {
-									noteArr[temp].pause();
-									noteArr[temp].currentTime = 0.15;
-								}
-								noteArr[j].play();
-								debounce = null;
-							}, 50)
+						if (temp != null) {
+							noteArr[temp].pause();
+							noteArr[temp].currentTime = 0.15;
 						}
+						noteArr[j].play();
+						// if (debounce == null) {
+						// 	debounce = setTimeout(function() {
+								
+						// 		debounce = null;
+						// 	}, 50)
+						// }
 						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
@@ -242,16 +243,17 @@ function bindingEvent(){
 				}
 				if (piano[index]) {
 					if (j != temp) {
-						if (debounce == null) {
-							debounce = setTimeout(function() {
-								if (temp != null) {
-									noteArr[temp].pause();
-									noteArr[temp].currentTime = 0.15;
-								}
-								noteArr[j].play();
-								debounce = null;
-							}, 50)
+						if (temp != null) {
+							noteArr[temp].pause();
+							noteArr[temp].currentTime = 0.15;
 						}
+						noteArr[j].play();
+						// if (debounce == null) {
+						// 	debounce = setTimeout(function() {
+								
+						// 		debounce = null;
+						// 	}, 50)
+						// }
 						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
