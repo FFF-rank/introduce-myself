@@ -17,6 +17,7 @@ enterGame.onclick = function(){
 }
 
 // 游戏背景音控制
+backgroundMusic.volume = 0.8;
 backgroundMusicSwitch.onclick = function() {
 	// 暂停音乐
 	if(!music.paused){
@@ -60,7 +61,7 @@ function bindingEvent(){
 			j = i - 7;
 		}
 		noteArr[j].playbackRate = 2.0;
-		backgroundMusic.volume = 0.6;
+		noteArr[j].volume = 1.0;
 		// 触摸事件
 		piano[i].ontouchstart = function() {
 			event.preventDefault();
