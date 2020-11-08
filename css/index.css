@@ -466,7 +466,6 @@ nav .nav-img {
 	width: 48%;
 	height: 48%;
 	
-	transform-style: preserve-3d;
 	perspective: 1000px;
 }
 .technology-item-front {
