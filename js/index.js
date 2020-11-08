@@ -14,6 +14,13 @@ let musicPause = document.querySelector('.music-pause');
 
 // ---------- 一、全局事件 ----------
 
+// fastclick
+if ('addEventListener' in document) {
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+}
+
 // 清除浏览器默认滑动行为
 document.ontouchmove = function(){
 	event.preventDefault();
