@@ -294,6 +294,7 @@ nav .nav-img {
 .homepage-photo-box {
 	position: relative;
 	
+	flex: none;
 	width: calc(var(--window-width) * .3);
 	height: calc(var(--window-width) * .3);
 	margin-bottom: calc(var(--window-width) * .1);
