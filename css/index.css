@@ -507,7 +507,7 @@ nav .nav-img {
 	border-radius: calc(var(--window-width) * .1);
 	color: #000;
 	
-	transform: rotateY(-180deg) translateZ(1px);
+	transform: rotateY(-180deg) translateZ(-1px);
 	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	transition: 1s;
