@@ -476,6 +476,7 @@ nav .nav-img {
 	background-color: #fff;
 	border-radius: calc(var(--window-width) * .1);
 	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	transition: 1s;
 	overflow: hidden;
 }
@@ -508,7 +509,6 @@ nav .nav-img {
 	color: #000;
 	
 	transform: rotateY(-180deg);
-	-webkit-transform: rotateY(-180deg);
 	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	transition: 1s;
@@ -536,11 +536,9 @@ nav .nav-img {
 }
 .technology-item.active .technology-item-front {
 	transform: rotateY(180deg);
-	-webkit-transform: rotateY(180deg);
 }
 .technology-item.active .technology-item-back {
 	transform: rotateY(0deg);
-	-webkit-transform: rotateY(0deg);
 }
 .technology-item-title {
 	display: flex;
