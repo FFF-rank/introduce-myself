@@ -65,6 +65,7 @@ function bindingEvent(){
 		// 触摸事件
 		piano[i].ontouchstart = function() {
 			event.preventDefault();
+			event.cancelBubble = true;
 			gameMask.classList.add('active');
 			isTouch = clearTimeout(isTouch);
 			isTouch = setTimeout(function(){
@@ -134,12 +135,6 @@ function bindingEvent(){
 							noteArr[temp].currentTime = 0.15;
 						}
 						noteArr[j].play();
-						// if (debounce == null) {
-						// 	debounce = setTimeout(function() {
-								
-						// 		debounce = null;
-						// 	}, 50)
-						// }
 						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
@@ -180,6 +175,7 @@ function bindingEvent(){
 		// 鼠标事件
 		piano[i].onmousedown = function() {
 			event.preventDefault();
+			event.cancelBubble = true;
 			gameMask.classList.add('active');
 			isTouch = clearTimeout(isTouch);
 			isTouch = setTimeout(function(){
