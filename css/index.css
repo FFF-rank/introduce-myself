@@ -145,10 +145,11 @@ header {
 	z-index: 50;
 	
 	flex-grow: 2;
-	
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	
+	word-break: break-all;
 }
 .message-read {
 	position: relative;
@@ -505,20 +506,20 @@ nav .nav-img {
 	align-items: center;
 	
 	word-break:break-all; 
-	word-wrap:break-word;
 	border-radius: calc(var(--window-width) * .1);
 	color: #000;
 	
 	transform: rotateY(-180deg);
 	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	transition: 1s;
 	overflow: hidden;
 }
 .technology-item-title {
-	height: 30%;
+	height: 20%;
 }
 .technology-item-detail {
-	height: 70%;
+	height: 80%;
 }
 .html-back {
 	background-color: #E2492C;
