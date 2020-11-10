@@ -65,7 +65,6 @@ function bindingEvent(){
 		// 触摸事件
 		piano[i].ontouchstart = function() {
 			event.preventDefault();
-			event.cancelBubble = true;
 			gameMask.classList.add('active');
 			isTouch = clearTimeout(isTouch);
 			isTouch = setTimeout(function(){
@@ -175,7 +174,6 @@ function bindingEvent(){
 		// 鼠标事件
 		piano[i].onmousedown = function() {
 			event.preventDefault();
-			event.cancelBubble = true;
 			gameMask.classList.add('active');
 			isTouch = clearTimeout(isTouch);
 			isTouch = setTimeout(function(){
