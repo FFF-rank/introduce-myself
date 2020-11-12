@@ -64,10 +64,10 @@ function bindingEvent(){
 		let j = i;
 		let k = i;
 		if(i > musicNoteArr.length - 1){
-			j = (i + 1) % musicNoteArr.length;
+			j = i % musicNoteArr.length;
 		}
 		if(i > 6){
-			k = (i + 1) % 7;
+			k = i % 7;
 		}
 		// 触摸事件
 		piano[i].ontouchstart = function() {
@@ -128,10 +128,10 @@ function bindingEvent(){
 					let j = index;
 					let k = index;
 					if(index > musicNoteArr.length - 1){
-						j = (index + 1) % musicNoteArr.length;
+						j = index % musicNoteArr.length;
 					}
 					if(index > 6){
-						k = (index + 1) % 7;
+						k = index % 7;
 					}
 					if (piano[index]) {
 						piano[index].style.backgroundColor = "#fff";
@@ -238,10 +238,10 @@ function bindingEvent(){
 					let j = index;
 					let k = index;
 					if(index > musicNoteArr.length - 1){
-						j = (index + 1) % musicNoteArr.length;
+						j = index % musicNoteArr.length;
 					}
 					if(index > 6){
-						k = (index + 1) % 7;
+						k = index % 7;
 					}
 					if (piano[index]) {
 						piano[index].style.backgroundColor = "#fff";
