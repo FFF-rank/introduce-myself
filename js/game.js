@@ -1,26 +1,24 @@
 let gameBegin = document.querySelector('.game-begin');
 let enterGame = document.querySelector('.enter-game');
-let noteArr = document.querySelectorAll('.piano-note');
+let musicNote = document.querySelector('.music-note');
 let piano = document.querySelectorAll('.piano');
 let backgroundMusic = document.querySelector('.background-music');
 let backgroundMusicSwitch = document.querySelector('.background-music-switch');
 let backgroundMusicSwitchContent = document.querySelector('.background-music-switch-content');
 let gameMask = document.querySelector('.game-mask');
-let temp = null;
 let backgroundCount = 0;
 let isTouch = null;
+let temp = null;
+let musicNoteArr = [];
+let throttle = null;
 
 // 进入游戏
 enterGame.onclick = function(){
 	gameBegin.classList.add('hide');
-	backgroundMusic.load();
-	for(let i = 0; i < noteArr.length; i++){
-		noteArr[i].load();
-	}
 }
 
 // 游戏背景音控制
-backgroundMusic.volume = 0.8;
+backgroundMusic.volume = .8;
 backgroundMusicSwitch.onclick = function() {
 	// 暂停音乐
 	if(!music.paused){
@@ -36,6 +34,12 @@ backgroundMusicSwitch.onclick = function() {
 	}
 	backgroundMusicSwitchContent.classList.toggle('active');
 }
+
+// 设置游戏按键音
+for(let note in base64Music){
+	musicNoteArr.push(base64Music[note]);
+}
+musicNote.volume = 1.0;
 
 // 定义画布
 let canvas = document.querySelector('.canvas-game');
@@ -56,15 +60,13 @@ bindingEvent();
 function bindingEvent(){
 	for (let i = 0; i < piano.length; i++) {
 		let j = i;
-		if(i > 20){
-			j = i - 21;
-		}else if(i > 13){
-			j = i - 14;
-		}else if(i > 6){
-			j = i - 7;
+		let k = i;
+		if(i > musicNoteArr.length - 1){
+			j = (i + 1) % musicNoteArr.length;
 		}
-		noteArr[j].playbackRate = 2.0;
-		noteArr[j].volume = 1.0;
+		if(i > 6){
+			k = (i + 1) % 7;
+		}
 		// 触摸事件
 		piano[i].ontouchstart = function() {
 			event.preventDefault();
@@ -74,18 +76,15 @@ function bindingEvent(){
 				gameMask.classList.remove('active');
 				isTouch = null;
 			},1000);
-			if (temp != null) {
-				noteArr[temp].pause();
-				noteArr[temp].currentTime = 0.15;
-			}
-			noteArr[j].play();
-			piano[i].style.backgroundColor = "rgba(255,255,255,.5)";
+			musicNote.pause();
+			musicNote.src = musicNoteArr[j];
+			musicNote.play();
+			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
 				piano[i].style.backgroundColor = "transparent";
-			}, 200)
-			temp = j;
+			}, 150)
 			backgroundCount++;
-			switch (j) {
+			switch (k) {
 				case 0:
 					createpolygon();
 					break;
@@ -108,6 +107,7 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
 				gameMask.classList.add('active');
@@ -122,28 +122,30 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				let j = index;
-				if(index > 20){
-					j = index - 21;
-				}else if(index > 13){
-					j = index - 14;
-				}else if(index > 6){
-					j = index - 7;
-				}
-				if (piano[index]) {
-					if (j != temp) {
-						if (temp != null) {
-							noteArr[temp].pause();
-							noteArr[temp].currentTime = 0.15;
+				if(index != temp){
+					let j = index;
+					let k = index;
+					if(index > musicNoteArr.length - 1){
+						j = (index + 1) % musicNoteArr.length;
+					}
+					if(index > 6){
+						k = (index + 1) % 7;
+					}
+					if (piano[index]) {
+						if(throttle == null){
+							throttle = setTimeout(function(){
+								musicNote.pause();
+								musicNote.src = musicNoteArr[j];
+								musicNote.play();
+								throttle = null;
+							},200)
 						}
-						noteArr[j].play();
-						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
+						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
-						}, 200)
-						temp = j;
+						}, 150)
 						backgroundCount++;
-						switch (j) {
+						switch (k) {
 							case 0:
 								createpolygon();
 								break;
@@ -167,6 +169,7 @@ function bindingEvent(){
 								break;
 						}
 					}
+					temp = index;
 				}
 			}
 			document.ontouchend = function(){
@@ -183,18 +186,15 @@ function bindingEvent(){
 				gameMask.classList.remove('active');
 				isTouch = null;
 			},1000);
-			if (temp != null) {
-				noteArr[temp].pause();
-				noteArr[temp].currentTime = 0.15;
-			}
-			noteArr[j].play();
-			piano[i].style.backgroundColor = "rgba(255,255,255,.5)";
+			musicNote.pause();
+			musicNote.src = musicNoteArr[j];
+			musicNote.play();
+			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
 				piano[i].style.backgroundColor = "transparent";
-			}, 200)
-			temp = j;
+			}, 150)
 			backgroundCount++;
-			switch (j) {
+			switch (k) {
 				case 0:
 					createpolygon();
 					break;
@@ -217,6 +217,8 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+			temp = i;
+			// 鼠标滑动
 			document.onmousemove=function(){
 				gameMask.classList.add('active');
 				isTouch = clearTimeout(isTouch);
@@ -230,28 +232,30 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				let j = index;
-				if(index > 20){
-					j = index - 21;
-				}else if(index > 13){
-					j = index - 14;
-				}else if(index > 6){
-					j = index - 7;
-				}
-				if (piano[index]) {
-					if (j != temp) {
-						if (temp != null) {
-							noteArr[temp].pause();
-							noteArr[temp].currentTime = 0.15;
+				if(index != temp){
+					let j = index;
+					let k = index;
+					if(index > musicNoteArr.length - 1){
+						j = (index + 1) % musicNoteArr.length;
+					}
+					if(index > 6){
+						k = (index + 1) % 7;
+					}
+					if (piano[index]) {
+						if(throttle == null){
+							throttle = setTimeout(function(){
+								musicNote.pause();
+								musicNote.src = musicNoteArr[j];
+								musicNote.play();
+								throttle = null;
+							},200)
 						}
-						noteArr[j].play();
-						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
+						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
-						}, 200)
-						temp = j;
+						}, 150)
 						backgroundCount++;
-						switch (j) {
+						switch (k) {
 							case 0:
 								createpolygon();
 								break;
@@ -275,6 +279,7 @@ function bindingEvent(){
 								break;
 						}
 					}
+					temp = index;
 				}
 			}
 			document.onmouseup = function(){

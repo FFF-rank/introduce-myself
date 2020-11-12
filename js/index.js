@@ -43,7 +43,7 @@ for(let i = 0, max = navItems.length; i < max; i++){
 	});
 };
 // 音乐播放
-
+music.volume = .6;
 musicPlay.addEventListener('click',function(){
 	// 暂停游戏背景音
 	if(!backgroundMusic.paused){

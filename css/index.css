@@ -618,6 +618,7 @@ nav .nav-img {
 	height: calc(var(--main-height) / 7);
 	
 	background-color: transparent;
+	transition: .5s;
 }
 .game-mask {
 	position: absolute;
