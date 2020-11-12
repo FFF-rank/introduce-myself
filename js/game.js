@@ -1,7 +1,6 @@
 let gameBegin = document.querySelector('.game-begin');
 let enterGame = document.querySelector('.enter-game');
 let noteArr = document.querySelectorAll('.piano-note');
-// console.log(noteArr);
 let piano = document.querySelectorAll('.piano');
 let backgroundMusic = document.querySelector('.background-music');
 let backgroundMusicSwitch = document.querySelector('.background-music-switch');
@@ -9,12 +8,15 @@ let backgroundMusicSwitchContent = document.querySelector('.background-music-swi
 let gameMask = document.querySelector('.game-mask');
 let temp = null;
 let backgroundCount = 0;
-// let debounce = null;
 let isTouch = null;
 
 // 进入游戏
 enterGame.onclick = function(){
 	gameBegin.classList.add('hide');
+	backgroundMusic.load();
+	for(let i = 0; i < noteArr.length; i++){
+		noteArr[i].load();
+	}
 }
 
 // 游戏背景音控制
