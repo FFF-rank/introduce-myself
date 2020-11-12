@@ -78,6 +78,7 @@ function bindingEvent(){
 			},1000);
 			musicNote.pause();
 			musicNote.src = musicNoteArr[j];
+			musicNote.load();
 			musicNote.play();
 			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
@@ -136,6 +137,7 @@ function bindingEvent(){
 							throttle = setTimeout(function(){
 								musicNote.pause();
 								musicNote.src = musicNoteArr[j];
+								musicNote.load();
 								musicNote.play();
 								throttle = null;
 							},200)
@@ -188,6 +190,7 @@ function bindingEvent(){
 			},1000);
 			musicNote.pause();
 			musicNote.src = musicNoteArr[j];
+			musicNote.load();
 			musicNote.play();
 			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
@@ -246,6 +249,7 @@ function bindingEvent(){
 							throttle = setTimeout(function(){
 								musicNote.pause();
 								musicNote.src = musicNoteArr[j];
+								musicNote.load();
 								musicNote.play();
 								throttle = null;
 							},200)
