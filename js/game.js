@@ -172,119 +172,119 @@ function bindingEvent(){
 			}
 		}
 		// 鼠标事件
-		piano[i].onmousedown = function() {
-			event.preventDefault();
-			gameMask.classList.add('active');
-			isTouch = clearTimeout(isTouch);
-			isTouch = setTimeout(function(){
-				gameMask.classList.remove('active');
-				isTouch = null;
-			},1000);
-			if (temp != null) {
-				noteArr[temp].pause();
-				noteArr[temp].currentTime = 0.15;
-			}
-			noteArr[j].play();
-			piano[i].style.backgroundColor = "rgba(255,255,255,.5)";
-			setTimeout(function() {
-				piano[i].style.backgroundColor = "transparent";
-			}, 200)
-			temp = j;
-			backgroundCount++;
-			switch (j) {
-				case 0:
-					createpolygon();
-					break;
-				case 1:
-					createsquareFly();
-					break;
-				case 2:
-					createCircle();
-					break;
-				case 3:
-					createcircleFly();
-					break;
-				case 4:
-					createArc();
-					break;
-				case 5:
-					createline();
-					break;
-				case 6:
-					createsquareRotate();
-					break;
-			}
-			document.onmousemove=function(){
-				gameMask.classList.add('active');
-				isTouch = clearTimeout(isTouch);
-				isTouch = setTimeout(function(){
-					gameMask.classList.remove('active');
-					isTouch = null;
-				},1000);
-				let currentElement = document.elementFromPoint(event.clientX, event.clientY);
-				let thePiano = [];
-				for (let i = 0; i < piano.length; i++) {
-					thePiano[i] = piano[i];
-				}
-				let index = thePiano.indexOf(currentElement);
-				let j = index;
-				if(index > 20){
-					j = index - 21;
-				}else if(index > 13){
-					j = index - 14;
-				}else if(index > 6){
-					j = index - 7;
-				}
-				if (piano[index]) {
-					if (j != temp) {
-						if (temp != null) {
-							noteArr[temp].pause();
-							noteArr[temp].currentTime = 0.15;
-						}
-						noteArr[j].play();
-						// if (debounce == null) {
-						// 	debounce = setTimeout(function() {
+		// piano[i].onmousedown = function() {
+		// 	event.preventDefault();
+		// 	gameMask.classList.add('active');
+		// 	isTouch = clearTimeout(isTouch);
+		// 	isTouch = setTimeout(function(){
+		// 		gameMask.classList.remove('active');
+		// 		isTouch = null;
+		// 	},1000);
+		// 	if (temp != null) {
+		// 		noteArr[temp].pause();
+		// 		noteArr[temp].currentTime = 0.15;
+		// 	}
+		// 	noteArr[j].play();
+		// 	piano[i].style.backgroundColor = "rgba(255,255,255,.5)";
+		// 	setTimeout(function() {
+		// 		piano[i].style.backgroundColor = "transparent";
+		// 	}, 200)
+		// 	temp = j;
+		// 	backgroundCount++;
+		// 	switch (j) {
+		// 		case 0:
+		// 			createpolygon();
+		// 			break;
+		// 		case 1:
+		// 			createsquareFly();
+		// 			break;
+		// 		case 2:
+		// 			createCircle();
+		// 			break;
+		// 		case 3:
+		// 			createcircleFly();
+		// 			break;
+		// 		case 4:
+		// 			createArc();
+		// 			break;
+		// 		case 5:
+		// 			createline();
+		// 			break;
+		// 		case 6:
+		// 			createsquareRotate();
+		// 			break;
+		// 	}
+		// 	document.onmousemove=function(){
+		// 		gameMask.classList.add('active');
+		// 		isTouch = clearTimeout(isTouch);
+		// 		isTouch = setTimeout(function(){
+		// 			gameMask.classList.remove('active');
+		// 			isTouch = null;
+		// 		},1000);
+		// 		let currentElement = document.elementFromPoint(event.clientX, event.clientY);
+		// 		let thePiano = [];
+		// 		for (let i = 0; i < piano.length; i++) {
+		// 			thePiano[i] = piano[i];
+		// 		}
+		// 		let index = thePiano.indexOf(currentElement);
+		// 		let j = index;
+		// 		if(index > 20){
+		// 			j = index - 21;
+		// 		}else if(index > 13){
+		// 			j = index - 14;
+		// 		}else if(index > 6){
+		// 			j = index - 7;
+		// 		}
+		// 		if (piano[index]) {
+		// 			if (j != temp) {
+		// 				if (temp != null) {
+		// 					noteArr[temp].pause();
+		// 					noteArr[temp].currentTime = 0.15;
+		// 				}
+		// 				noteArr[j].play();
+		// 				// if (debounce == null) {
+		// 				// 	debounce = setTimeout(function() {
 								
-						// 		debounce = null;
-						// 	}, 50)
-						// }
-						piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
-						setTimeout(function() {
-							piano[index].style.backgroundColor = "transparent";
-						}, 200)
-						temp = j;
-						backgroundCount++;
-						switch (j) {
-							case 0:
-								createpolygon();
-								break;
-							case 1:
-								createsquareFly();
-								break;
-							case 2:
-								createCircle();
-								break;
-							case 3:
-								createcircleFly();
-								break;
-							case 4:
-								createArc();
-								break;
-							case 5:
-								createline();
-								break;
-							case 6:
-								createsquareRotate();
-								break;
-						}
-					}
-				}
-			}
-			document.onmouseup = function(){
-				document.onmousemove = null;
-				document.onmouseup = null;
-			}
-		}
+		// 				// 		debounce = null;
+		// 				// 	}, 50)
+		// 				// }
+		// 				piano[index].style.backgroundColor = "rgba(255,255,255,.5)";
+		// 				setTimeout(function() {
+		// 					piano[index].style.backgroundColor = "transparent";
+		// 				}, 200)
+		// 				temp = j;
+		// 				backgroundCount++;
+		// 				switch (j) {
+		// 					case 0:
+		// 						createpolygon();
+		// 						break;
+		// 					case 1:
+		// 						createsquareFly();
+		// 						break;
+		// 					case 2:
+		// 						createCircle();
+		// 						break;
+		// 					case 3:
+		// 						createcircleFly();
+		// 						break;
+		// 					case 4:
+		// 						createArc();
+		// 						break;
+		// 					case 5:
+		// 						createline();
+		// 						break;
+		// 					case 6:
+		// 						createsquareRotate();
+		// 						break;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	document.onmouseup = function(){
+		// 		document.onmousemove = null;
+		// 		document.onmouseup = null;
+		// 	}
+		// }
 	}
 }
 
@@ -303,7 +303,7 @@ setInterval(function() {
 	showArc();
 	showline();
 	showsquareRotate();
-}, 32)
+}, 16)
 
 
 // 多边形框
