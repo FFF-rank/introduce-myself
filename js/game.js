@@ -78,9 +78,6 @@ function bindingEvent(){
 				gameMask.classList.remove('active');
 				isTouch = null;
 			},1000);
-			musicNote.pause();
-			musicNote.src = musicNoteArr[j];
-			musicNote.play();
 			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
 				piano[i].style.backgroundColor = "transparent";
@@ -109,6 +106,9 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+			musicNote.pause();
+			musicNote.src = musicNoteArr[j];
+			musicNote.play();
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -134,14 +134,6 @@ function bindingEvent(){
 						k = (index + 1) % 7;
 					}
 					if (piano[index]) {
-						if(throttle == null){
-							throttle = setTimeout(function(){
-								musicNote.pause();
-								musicNote.src = musicNoteArr[j];
-								musicNote.play();
-								throttle = null;
-							},200)
-						}
 						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
@@ -170,6 +162,14 @@ function bindingEvent(){
 								createsquareRotate();
 								break;
 						}
+						if(throttle == null){
+							throttle = setTimeout(function(){
+								musicNote.pause();
+								musicNote.src = musicNoteArr[j];
+								musicNote.play();
+								throttle = null;
+							},200)
+						}
 					}
 					temp = index;
 				}
@@ -188,9 +188,6 @@ function bindingEvent(){
 				gameMask.classList.remove('active');
 				isTouch = null;
 			},1000);
-			musicNote.pause();
-			musicNote.src = musicNoteArr[j];
-			musicNote.play();
 			piano[i].style.backgroundColor = "#fff";
 			setTimeout(function() {
 				piano[i].style.backgroundColor = "transparent";
@@ -219,6 +216,9 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+			musicNote.pause();
+			musicNote.src = musicNoteArr[j];
+			musicNote.play();
 			temp = i;
 			// 鼠标滑动
 			document.onmousemove=function(){
@@ -244,14 +244,6 @@ function bindingEvent(){
 						k = (index + 1) % 7;
 					}
 					if (piano[index]) {
-						if(throttle == null){
-							throttle = setTimeout(function(){
-								musicNote.pause();
-								musicNote.src = musicNoteArr[j];
-								musicNote.play();
-								throttle = null;
-							},200)
-						}
 						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
 							piano[index].style.backgroundColor = "transparent";
@@ -279,6 +271,14 @@ function bindingEvent(){
 							case 6:
 								createsquareRotate();
 								break;
+						}
+						if(throttle == null){
+							throttle = setTimeout(function(){
+								musicNote.pause();
+								musicNote.src = musicNoteArr[j];
+								musicNote.play();
+								throttle = null;
+							},200)
 						}
 					}
 					temp = index;
