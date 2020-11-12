@@ -303,7 +303,7 @@ setInterval(function() {
 	showArc();
 	showline();
 	showsquareRotate();
-}, 16)
+}, 32)
 
 
 // 多边形框
