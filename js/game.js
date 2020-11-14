@@ -11,6 +11,7 @@ let isTouch = null;
 let temp = null;
 let musicNoteArr = [];
 let throttle = null;
+let pianoLength = piano.length;
 
 // 进入游戏
 enterGame.onclick = function(){
@@ -42,6 +43,7 @@ for(let note in base64Music){
 	musicNoteArr.push(base64Music[note]);
 }
 musicNote.volume = 1.0;
+let musicNoteArrLength = musicNoteArr.length;
 
 // 定义画布
 let canvas = document.querySelector('.canvas-game');
@@ -60,11 +62,11 @@ window.onresize = function(){
 // 绑定游戏操作事件
 bindingEvent();
 function bindingEvent(){
-	for (let i = 0; i < piano.length; i++) {
+	for (let i = 0, max = pianoLength; i < max; i++) {
 		let j = i;
 		let k = i;
-		if(i > musicNoteArr.length - 1){
-			j = i % musicNoteArr.length;
+		if(i > musicNoteArrLength - 1){
+			j = i % musicNoteArrLength;
 		}
 		if(i > 6){
 			k = i % 7;
@@ -106,9 +108,9 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			musicNote.pause();
-			musicNote.src = musicNoteArr[j];
-			musicNote.play();
+			// musicNote.pause();
+			// musicNote.src = musicNoteArr[j];
+			// musicNote.play();
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -120,15 +122,15 @@ function bindingEvent(){
 				},1000);
 				let currentElement = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
 				let thePiano = [];
-				for (let i = 0; i < piano.length; i++) {
+				for (let i = 0, max = pianoLength; i < max; i++) {
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
 				if(index != temp){
 					let j = index;
 					let k = index;
-					if(index > musicNoteArr.length - 1){
-						j = index % musicNoteArr.length;
+					if(index > musicNoteArrLength - 1){
+						j = index % musicNoteArrLength;
 					}
 					if(index > 6){
 						k = index % 7;
@@ -162,14 +164,14 @@ function bindingEvent(){
 								createsquareRotate();
 								break;
 						}
-						if(throttle == null){
-							throttle = setTimeout(function(){
-								musicNote.pause();
-								musicNote.src = musicNoteArr[j];
-								musicNote.play();
-								throttle = null;
-							},200)
-						}
+						// if(throttle == null){
+						// 	throttle = setTimeout(function(){
+						// 		musicNote.pause();
+						// 		musicNote.src = musicNoteArr[j];
+						// 		musicNote.play();
+						// 		throttle = null;
+						// 	},200);
+						// }
 					}
 					temp = index;
 				}
@@ -230,15 +232,15 @@ function bindingEvent(){
 				},1000);
 				let currentElement = document.elementFromPoint(event.clientX, event.clientY);
 				let thePiano = [];
-				for (let i = 0; i < piano.length; i++) {
+				for (let i = 0, max = pianoLength; i < max; i++) {
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
 				if(index != temp){
 					let j = index;
 					let k = index;
-					if(index > musicNoteArr.length - 1){
-						j = index % musicNoteArr.length;
+					if(index > musicNoteArrLength - 1){
+						j = index % musicNoteArrLength;
 					}
 					if(index > 6){
 						k = index % 7;
@@ -428,7 +430,7 @@ function createCircle() {
 }
 
 function showCitcle() {
-	for (let i = 0; i < circleArr.length; i++) {
+	for (let i = 0, max = circleArr.length; i < max; i++) {
 		if (circleArr[i]) {
 			if (circleArr[i].count < 60) {
 				can.beginPath();
@@ -525,7 +527,7 @@ function createArc() {
 }
 
 function showArc() {
-	for (let i = 0; i < arcArr.length; i++) {
+	for (let i = 0, max = arcArr.length; i < max; i++) {
 		if (arcArr[i]) {
 			if (arcArr[i].count < 60) {
 				can.beginPath();
