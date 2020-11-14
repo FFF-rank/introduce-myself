@@ -41,10 +41,15 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	let audio = document.createElement('audio');
-	audio.className = 'musicNote';
-	audio.src = base64Music[note];
-	document.body.appendChild(audio);
+	// let audio = document.createElement('audio');
+	// audio.className = 'musicNote';
+	// audio.src = base64Music[note];
+	// document.body.appendChild(audio);
+	// musicNoteArr.push(audio);
+	
+	let audio = new Howl({
+		src:base64Music[note]
+	})
 	musicNoteArr.push(audio);
 }
 let musicNoteArrLength = musicNoteArr.length;
@@ -113,8 +118,9 @@ function bindingEvent(){
 					break;
 			}
 			if(temp != null){
-				musicNoteArr[temp].pause();
-				musicNoteArr[temp].currentTime = 0;
+				musicNoteArr[temp].stop();
+				// musicNoteArr[temp].pause();
+				// musicNoteArr[temp].currentTime = 0;
 			}
 			musicNoteArr[j].play();
 			temp = i;
