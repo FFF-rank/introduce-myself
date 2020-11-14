@@ -40,22 +40,10 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	base64Music[note] = window.URL.createObjectURL(base64ToUrl(base64Music[note]));
 	musicNoteArr.push(base64Music[note]);
 }
 musicNote.volume = 1.0;
 let musicNoteArrLength = musicNoteArr.length;
-function base64ToUrl(data){
-	let arr = data.split(','),
-			mime = arr[0].match(/:(.*?);/)[1],
-			bstr = atob(arr[1]),
-			n = bstr.length;
-			u8arr = new Uint8Array(n);
-	while (n--){
-		u8arr[n] = bstr.charCodeAt(n);
-	}
-	return new Blob([u8arr],{type:mime});
-}
 
 // 定义画布
 let canvas = document.querySelector('.canvas-game');
