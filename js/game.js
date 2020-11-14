@@ -40,6 +40,7 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
+	base64Music[note] = base64Music[note].replace('mp3','mpeg')
 	musicNoteArr.push(base64Music[note]);
 }
 musicNote.volume = 1.0;
@@ -108,6 +109,7 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+			// console.log(musicNoteArr[j]);
 			if(!musicNote.paused){
 				musicNote.pause();
 				musicNote.src = musicNoteArr[j];
