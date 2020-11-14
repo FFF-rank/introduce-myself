@@ -17,9 +17,7 @@ let pianoLength = piano.length;
 enterGame.onclick = function(){
 	gameBegin.classList.add('hide');
 	backgroundMusic.load();
-	for(let i = 0, max = musicNoteArr.length; i < max; i++){
-		musicNoteArr[i].load();
-	}
+	musicNote.load();
 }
 
 // 游戏背景音控制
@@ -42,12 +40,9 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	let audio = document.createElement('audio');
-	audio.src = base64Music[note];
-	document.body.appendChild(audio);
-	audio.volume = 1.0;
-	musicNoteArr.push(audio);
+	musicNoteArr.push(base64Music[note]);
 }
+musicNote.volume = 1.0;
 let musicNoteArrLength = musicNoteArr.length;
 
 // 定义画布
@@ -113,12 +108,9 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(!musicNoteArr[j].paused){
-				musicNoteArr[j].pause();
-				musicNoteArr[j].play();
-			}else{
-				musicNoteArr[j].play();
-			}
+			musicNote.pause();
+			musicNote.src = musicNoteArr[j];
+			musicNote.play();
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -174,12 +166,9 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								if(!musicNoteArr[j].paused){
-									musicNoteArr[j].pause();
-									musicNoteArr[j].play();
-								}else{
-									musicNoteArr[j].play();
-								}
+								musicNote.pause();
+								musicNote.src = musicNoteArr[j];
+								musicNote.play();
 								throttle = null;
 							},200);
 						}
