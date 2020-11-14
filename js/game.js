@@ -40,11 +40,11 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	base64Music[note] = base64Music[note].replace('mp3','mpeg')
 	musicNoteArr.push(base64Music[note]);
 }
 musicNote.volume = 1.0;
 let musicNoteArrLength = musicNoteArr.length;
+let abc = ['A+.mp3','B+.mp3','C+.mp3','D+.mp3','E+.mp3','F+.mp3','G+.mp3'];
 
 // 定义画布
 let canvas = document.querySelector('.canvas-game');
@@ -109,15 +109,17 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			// console.log(musicNoteArr[j]);
-			if(!musicNote.paused){
-				musicNote.pause();
-				musicNote.src = musicNoteArr[j];
-				musicNote.play();
-			}else{
-				musicNote.src = musicNoteArr[j];
-				musicNote.play();
-			}
+			musicNote.pause();
+			musicNote.src = './audio/piano/' + abc[k];
+			musicNote.play();
+			// if(!musicNote.paused){
+			// 	musicNote.pause();
+			// 	musicNote.src = musicNoteArr[j];
+			// 	musicNote.play();
+			// }else{
+			// 	musicNote.src = musicNoteArr[j];
+			// 	musicNote.play();
+			// }
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {

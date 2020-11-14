@@ -3,7 +3,7 @@
 // 标签页图片
 document.querySelector('.tab-image').href ='./img/homepage/微信头像.jpg';
 // 版本号
-updateText('.edition','5.2');
+updateText('.edition','5.3');
 // github地址
 updateText('.GitHub-address','https://github.com/FFF-rank/introduce-myself');
 
