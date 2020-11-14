@@ -112,12 +112,11 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(!musicNoteArr[j].paused){
-				musicNoteArr[j].pause();
-				musicNoteArr[j].play();
-			}else{
-				musicNoteArr[j].play();
+			if(temp != null){
+				musicNoteArr[temp].pause();
+				musicNoteArr[temp].currentTime = 0;
 			}
+			musicNoteArr[j].play();
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -133,7 +132,7 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				if(index != temp){
+				if(index != temp && index != -1){
 					let j = index;
 					let k = index;
 					if(index > musicNoteArrLength - 1){
@@ -173,12 +172,9 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								if(!musicNoteArr[j].paused){
-									musicNoteArr[j].pause();
-									musicNoteArr[j].play();
-								}else{
-									musicNoteArr[j].play();
-								}
+								musicNoteArr[temp].pause();
+								musicNoteArr[temp].currentTime = 0;
+								musicNoteArr[j].play();
 								throttle = null;
 							},200);
 						}
@@ -228,12 +224,11 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(!musicNoteArr[j].paused){
-				musicNoteArr[j].pause();
-				musicNoteArr[j].play();
-			}else{
-				musicNoteArr[j].play();
+			if(temp != null){
+				musicNoteArr[temp].pause();
+				musicNoteArr[temp].currentTime = 0;
 			}
+			musicNoteArr[j].play();
 			temp = i;
 			// 鼠标滑动
 			document.onmousemove=function(){
@@ -249,7 +244,7 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				if(index != temp){
+				if(index != temp && index != -1){
 					let j = index;
 					let k = index;
 					if(index > musicNoteArrLength - 1){
@@ -289,12 +284,9 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								if(!musicNoteArr[j].paused){
-									musicNoteArr[j].pause();
-									musicNoteArr[j].play();
-								}else{
-									musicNoteArr[j].play();
-								}
+								musicNoteArr[temp].pause();
+								musicNoteArr[temp].currentTime = 0;
+								musicNoteArr[j].play();
 								throttle = null;
 							},200)
 						}
