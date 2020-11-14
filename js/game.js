@@ -108,9 +108,20 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
+<<<<<<< HEAD
 			musicNote.pause();
 			musicNote.src = musicNoteArr[j];
 			musicNote.play();
+=======
+			if(!musicNote.paused){
+				musicNote.pause();
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}else{
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}
+>>>>>>> parent of dcf0d32... 5.8
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -166,9 +177,20 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
+<<<<<<< HEAD
 								musicNote.pause();
 								musicNote.src = musicNoteArr[j];
 								musicNote.play();
+=======
+								if(!musicNote.paused){
+									musicNote.pause();
+									musicNote.src = musicNoteArr[j];
+									musicNote.play();
+								}else{
+									musicNote.src = musicNoteArr[j];
+									musicNote.play();
+								}
+>>>>>>> parent of dcf0d32... 5.8
 								throttle = null;
 							},200);
 						}
