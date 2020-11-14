@@ -108,9 +108,14 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			// musicNote.pause();
-			// musicNote.src = musicNoteArr[j];
-			// musicNote.play();
+			if(!musicNote.paused){
+				musicNote.pause();
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}else{
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
