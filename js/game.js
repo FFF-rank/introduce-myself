@@ -1,7 +1,6 @@
 let gameBegin = document.querySelector('.game-begin');
 let enterGame = document.querySelector('.enter-game');
 let piano = document.querySelectorAll('.piano');
-let backgroundMusic = document.querySelector('.background-music');
 let backgroundMusicSwitch = document.querySelector('.background-music-switch');
 let backgroundMusicSwitchContent = document.querySelector('.background-music-switch-content');
 let gameMask = document.querySelector('.game-mask');
@@ -22,6 +21,10 @@ enterGame.onclick = function(){
 }
 
 // 游戏背景音控制
+let backgroundMusic = new Howl({
+	src:'./audio/动感背景音乐.mp3',
+	loop:true
+});
 backgroundMusic.volume = .8;
 backgroundMusicSwitch.onclick = function() {
 	// 暂停音乐
@@ -31,7 +34,7 @@ backgroundMusicSwitch.onclick = function() {
 		music.pause();
 	}
 	// 播放游戏背景音
-	if (backgroundMusic.paused) {
+	if (!backgroundMusic.playing()) {
 		backgroundMusic.play();
 	} else {
 		backgroundMusic.pause();
@@ -41,15 +44,9 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	// let audio = document.createElement('audio');
-	// audio.className = 'musicNote';
-	// audio.src = base64Music[note];
-	// document.body.appendChild(audio);
-	// musicNoteArr.push(audio);
-	
 	let audio = new Howl({
 		src:base64Music[note]
-	})
+	});
 	musicNoteArr.push(audio);
 }
 let musicNoteArrLength = musicNoteArr.length;
@@ -119,8 +116,6 @@ function bindingEvent(){
 			}
 			if(temp != null){
 				musicNoteArr[temp].stop();
-				// musicNoteArr[temp].pause();
-				// musicNoteArr[temp].currentTime = 0;
 			}
 			musicNoteArr[j].play();
 			temp = i;
@@ -178,8 +173,7 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNoteArr[temp].pause();
-								musicNoteArr[temp].currentTime = 0;
+								musicNoteArr[temp].stop();
 								musicNoteArr[j].play();
 								throttle = null;
 							},200);
@@ -231,8 +225,7 @@ function bindingEvent(){
 					break;
 			}
 			if(temp != null){
-				musicNoteArr[temp].pause();
-				musicNoteArr[temp].currentTime = 0;
+				musicNoteArr[temp].stop();
 			}
 			musicNoteArr[j].play();
 			temp = i;
@@ -290,8 +283,7 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNoteArr[temp].pause();
-								musicNoteArr[temp].currentTime = 0;
+								musicNoteArr[temp].stop();
 								musicNoteArr[j].play();
 								throttle = null;
 							},200)

@@ -26,7 +26,7 @@ for(let i = 0, max = navItems.length; i < max; i++){
 		navJump(i);
 		// 切换页面时回到游戏进入前状态
 		gameBegin.classList.remove('hide');
-		if(!backgroundMusic.paused){
+		if(backgroundMusic.playing()){
 			backgroundMusic.pause();
 			backgroundMusicSwitchContent.classList.toggle('active');
 		}
@@ -39,7 +39,7 @@ for(let i = 0, max = navItems.length; i < max; i++){
 music.volume = .6;
 musicPlay.addEventListener('click',function(){
 	// 暂停游戏背景音
-	if(!backgroundMusic.paused){
+	if(backgroundMusic.playing()){
 		backgroundMusic.pause();
 		backgroundMusicSwitchContent.classList.toggle('active');
 	}
