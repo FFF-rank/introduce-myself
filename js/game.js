@@ -17,7 +17,7 @@ let pianoLength = piano.length;
 enterGame.onclick = function(){
 	gameBegin.classList.add('hide');
 	backgroundMusic.load();
-	musicNote.load();
+	musicNote.play();
 }
 
 // 游戏背景音控制
@@ -44,7 +44,6 @@ for(let note in base64Music){
 }
 musicNote.volume = 1.0;
 let musicNoteArrLength = musicNoteArr.length;
-let abc = ['A+.mp3','B+.mp3','C+.mp3','D+.mp3','E+.mp3','F+.mp3','G+.mp3'];
 
 // 定义画布
 let canvas = document.querySelector('.canvas-game');
@@ -109,17 +108,14 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			musicNote.pause();
-			musicNote.src = './audio/piano/' + abc[k];
-			musicNote.play();
-			// if(!musicNote.paused){
-			// 	musicNote.pause();
-			// 	musicNote.src = musicNoteArr[j];
-			// 	musicNote.play();
-			// }else{
-			// 	musicNote.src = musicNoteArr[j];
-			// 	musicNote.play();
-			// }
+			if(!musicNote.paused){
+				musicNote.pause();
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}else{
+				musicNote.src = musicNoteArr[j];
+				musicNote.play();
+			}
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -173,19 +169,16 @@ function bindingEvent(){
 								createsquareRotate();
 								break;
 						}
-						// if(throttle == null){
-						// 	throttle = setTimeout(function(){
-						// 		musicNote.pause();
-						// 		musicNote.src = musicNoteArr[j];
-						// 		musicNote.play();
-						// 		throttle = null;
-						// 	},200);
-						// }
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNote.pause();
-								musicNote.src = './audio/piano/' + abc[k];
-								musicNote.play();
+								if(!musicNote.paused){
+									musicNote.pause();
+									musicNote.src = musicNoteArr[j];
+									musicNote.play();
+								}else{
+									musicNote.src = musicNoteArr[j];
+									musicNote.play();
+								}
 								throttle = null;
 							},200);
 						}
