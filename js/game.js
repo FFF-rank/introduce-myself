@@ -67,8 +67,14 @@ window.onresize = function(){
 bindingEvent();
 function bindingEvent(){
 	for (let i = 0, max = pianoLength; i < max; i++) {
-		let j = i % musicNoteArrLength;
-		let k = i % 7;
+		let j = i;
+		let k = i;
+		if(i > musicNoteArrLength - 1){
+			j = i % musicNoteArrLength;
+		}
+		if(i > 6){
+			k = i % 7;
+		}
 		// 触摸事件
 		piano[i].ontouchstart = function() {
 			event.preventDefault();
@@ -106,11 +112,12 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(temp != null){
-				musicNoteArr[temp].pause();
-				musicNoteArr[temp].currentTime = 0;
+			if(!musicNoteArr[j].paused){
+				musicNoteArr[j].pause();
+				musicNoteArr[j].play();
+			}else{
+				musicNoteArr[j].play();
 			}
-			musicNoteArr[j].play();
 			temp = i;
 			// 滑动事件
 			document.ontouchmove = function() {
@@ -126,9 +133,15 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				if(index != temp && index != -1){
-					let j = index % musicNoteArrLength;
-					let k = index % 7;
+				if(index != temp){
+					let j = index;
+					let k = index;
+					if(index > musicNoteArrLength - 1){
+						j = index % musicNoteArrLength;
+					}
+					if(index > 6){
+						k = index % 7;
+					}
 					if (piano[index]) {
 						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
@@ -160,9 +173,12 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNoteArr[temp].pause();
-								musicNoteArr[temp].currentTime = 0;
-								musicNoteArr[index].play();
+								if(!musicNoteArr[j].paused){
+									musicNoteArr[j].pause();
+									musicNoteArr[j].play();
+								}else{
+									musicNoteArr[j].play();
+								}
 								throttle = null;
 							},200);
 						}
@@ -212,11 +228,12 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(temp != null){
-				musicNoteArr[temp].pause();
-				musicNoteArr[temp].currentTime = 0;
+			if(!musicNoteArr[j].paused){
+				musicNoteArr[j].pause();
+				musicNoteArr[j].play();
+			}else{
+				musicNoteArr[j].play();
 			}
-			musicNoteArr[j].play();
 			temp = i;
 			// 鼠标滑动
 			document.onmousemove=function(){
@@ -232,9 +249,15 @@ function bindingEvent(){
 					thePiano[i] = piano[i];
 				}
 				let index = thePiano.indexOf(currentElement);
-				if(index != temp && index != -1){
-					let j = index % musicNoteArrLength;
-					let k = index % 7;
+				if(index != temp){
+					let j = index;
+					let k = index;
+					if(index > musicNoteArrLength - 1){
+						j = index % musicNoteArrLength;
+					}
+					if(index > 6){
+						k = index % 7;
+					}
 					if (piano[index]) {
 						piano[index].style.backgroundColor = "#fff";
 						setTimeout(function() {
@@ -266,9 +289,12 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNoteArr[temp].pause();
-								musicNoteArr[temp].currentTime = 0;
-								musicNoteArr[index].play();
+								if(!musicNoteArr[j].paused){
+									musicNoteArr[j].pause();
+									musicNoteArr[j].play();
+								}else{
+									musicNoteArr[j].play();
+								}
 								throttle = null;
 							},200)
 						}
