@@ -181,6 +181,14 @@ function bindingEvent(){
 						// 		throttle = null;
 						// 	},200);
 						// }
+						if(throttle == null){
+							throttle = setTimeout(function(){
+								musicNote.pause();
+								musicNote.src = './audio/piano/' + abc[k];
+								musicNote.play();
+								throttle = null;
+							},200);
+						}
 					}
 					temp = index;
 				}
