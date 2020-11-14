@@ -1,13 +1,9 @@
 // ---------- 个人信息填写 ----------
 
 // 标签页图片
-document.querySelector('.tab-image').href ='./img/homepage/微信头像.jpg';
+// document.querySelector('.tab-image').href ='./img/homepage/微信头像.jpg';
 // 版本号
-<<<<<<< HEAD
 updateText('.edition','5.9');
-=======
-updateText('.edition','5.7');
->>>>>>> parent of dcf0d32... 5.8
 // github地址
 updateText('.GitHub-address','https://github.com/FFF-rank/introduce-myself');
 
