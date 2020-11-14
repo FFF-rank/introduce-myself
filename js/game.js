@@ -1,6 +1,5 @@
 let gameBegin = document.querySelector('.game-begin');
 let enterGame = document.querySelector('.enter-game');
-let musicNote = document.querySelector('.music-note');
 let piano = document.querySelectorAll('.piano');
 let backgroundMusic = document.querySelector('.background-music');
 let backgroundMusicSwitch = document.querySelector('.background-music-switch');
@@ -17,7 +16,9 @@ let pianoLength = piano.length;
 enterGame.onclick = function(){
 	gameBegin.classList.add('hide');
 	backgroundMusic.load();
-	musicNote.load();
+	for(let item of musicNoteArr){
+		item.load();
+	}
 }
 
 // 游戏背景音控制
@@ -40,9 +41,12 @@ backgroundMusicSwitch.onclick = function() {
 
 // 设置游戏按键音
 for(let note in base64Music){
-	musicNoteArr.push(base64Music[note]);
+	let audio = document.createElement('audio');
+	audio.className = 'musicNote';
+	audio.src = base64Music[note];
+	document.body.appendChild(audio);
+	musicNoteArr.push(audio);
 }
-musicNote.volume = 1.0;
 let musicNoteArrLength = musicNoteArr.length;
 
 // 定义画布
@@ -108,13 +112,11 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			if(!musicNote.paused){
-				musicNote.pause();
-				musicNote.src = musicNoteArr[j];
-				musicNote.play();
+			if(!musicNoteArr[j].paused){
+				musicNoteArr[j].pause();
+				musicNoteArr[j].play();
 			}else{
-				musicNote.src = musicNoteArr[j];
-				musicNote.play();
+				musicNoteArr[j].play();
 			}
 			temp = i;
 			// 滑动事件
@@ -171,13 +173,11 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								if(!musicNote.paused){
-									musicNote.pause();
-									musicNote.src = musicNoteArr[j];
-									musicNote.play();
+								if(!musicNoteArr[j].paused){
+									musicNoteArr[j].pause();
+									musicNoteArr[j].play();
 								}else{
-									musicNote.src = musicNoteArr[j];
-									musicNote.play();
+									musicNoteArr[j].play();
 								}
 								throttle = null;
 							},200);
@@ -228,9 +228,12 @@ function bindingEvent(){
 					createsquareRotate();
 					break;
 			}
-			musicNote.pause();
-			musicNote.src = musicNoteArr[j];
-			musicNote.play();
+			if(!musicNoteArr[j].paused){
+				musicNoteArr[j].pause();
+				musicNoteArr[j].play();
+			}else{
+				musicNoteArr[j].play();
+			}
 			temp = i;
 			// 鼠标滑动
 			document.onmousemove=function(){
@@ -286,9 +289,12 @@ function bindingEvent(){
 						}
 						if(throttle == null){
 							throttle = setTimeout(function(){
-								musicNote.pause();
-								musicNote.src = musicNoteArr[j];
-								musicNote.play();
+								if(!musicNoteArr[j].paused){
+									musicNoteArr[j].pause();
+									musicNoteArr[j].play();
+								}else{
+									musicNoteArr[j].play();
+								}
 								throttle = null;
 							},200)
 						}
